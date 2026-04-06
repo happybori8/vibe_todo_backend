@@ -1,10 +1,12 @@
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '8.8.4.4']);
+if (process.platform === 'win32') {
+  const dns = require('dns');
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+}
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config({ override: true });
+require('dotenv').config();
 
 const todoRouter = require('./routes/todo');
 
